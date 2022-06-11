@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <title>&#128151; THÔNG SỐ SỰ CỐ - TRUNG TÂM ĐIỀU KHIỂN XA HẢI DƯƠNG</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="image/favicon-32x32.png"
+    />
+  </head>
+  <link rel="stylesheet" href="styles.css" />
+  <body>
+    <!-- Quốc hiệu, tiêu ngữ, logo -->
+    <div>
+      <table class="initial" style="border: none">
+        <tr>
+          <td style="width: 40%; border: none">
+            CÔNG TY TNHH MTV
+            <br />
+            ĐIỆN LỰC HẢI DƯƠNG
+            <br />
+            <u><b>TRUNG TÂM ĐIỀU KHIỂN XA</b></u>
+          </td>
+          <td style="width: 20%; border: none">
+            <img
+              src="image/Logo.png"
+              height="80"
+            />
+          </td>
+          <td style="width: 40%; border: none">
+            <b>Cộng hòa xã hội chủ nghĩa Việt Nam</b>
+            <br />
+            <u><b>Độc lập - Tự do - Hạnh phúc</b></u>
+            <br />
+            <i
+              >Hải Dương, ngày <abbr id="ngay"></abbr> tháng
+              <abbr id="thang"></abbr> năm <abbr id="nam"></abbr
+            ></i>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <hr />
+
+    <!-- Tiêu đề -->
+    <div>
+      <h1>TỔNG HỢP SỰ KIỆN KINH TẾ, CHÍNH TRỊ, XÃ HỘI VÀ THÔNG SỐ SỰ CỐ</h1>
+      <audio muted style="display: none" controls id="alert">
+        <source
+          src="audio/Fault.mp3"
+          type="audio/mpeg"
+        />
+      </audio>
+      <br />
+    </div>
+
+    <!-- Danh sách các tác vụ -->
+    <center>
+      <div class="row">
+        <div class="side_by_side">
+          <button id="add_data_button" class="btn_style" style="width: 60%">
+            THÊM MỚI &#10133;
+          </button>
+          <br />
+          <button id="edit_data_button" class="btn_style" style="width: 60%">
+            CHỈNH SỬA &#9998;
+          </button>
+          <br />
+          <button id="confirm" class="btn_style" style="width: 60%">
+            XÁC NHẬN &#10004;
+          </button>
+        </div>
+        <div class="side_by_side">
+          <h2 id="now_time">Bây giờ là:</h2>
+          <button id="enable_alert" class="btn_style">
+            BẬT/TẮT CHUÔNG <span id="volumn">&#128263;</span>
+          </button>
+          <br />
+          <button
+            id="update_value_listen"
+            class="btn_style"
+            style="background-color: #f44336"
+          >
+            CẢNH BÁO &#128226;
+          </button>
+        </div>
+        <div class="side_by_side">
+          <button id="spare" class="btn_style" style="width: 30%; padding: 5px;">CHỌN SỰ KIỆN</button>
+          <input id="input_report" class="table-content" type="text" style="width: 20%;" />
+          <button id="copy_report" class="btn_style" style="width: 30%; padding: 5px;">COPY</button>
+          <br />
+          <a id="report" style="font-size: 20px; width: 50%;"></a>
+        </div>        
+      </div>
+    </center>
+
+    <div>
+      <center>
+        <p
+          id="head_edit_data"
+          style="display: none; font-size: 30px; font-weight: bold"
+        >
+          Vui lòng chọn sự kiện cần chỉnh sửa
+        </p>
+      </center>
+      <table id="edit_data_table" class="table-content" style="display: none">
+        <tr>
+          <th rowspan="2" style="width: 5%">STT</th>
+          <th rowspan="2" style="width: 15%">Trạm biến áp</th>
+          <th rowspan="2" style="width: 5%">Ngăn lộ</th>
+          <th rowspan="2" style="width: 10%">Thời điểm nhảy</th>
+          <th rowspan="2" style="width: 10%">Thời điểm đóng</th>
+          <th rowspan="2" style="width: 10%">Bảo vệ tác động</th>
+          <th colspan="4">Dòng sự cố</th>
+          <th colspan="3">Dòng sự cố lớn nhất</th>
+          <th rowspan="2" style="width: 15%">Ghi chú</th>
+        </tr>
+        <tr>
+          <th style="width: 5%">Pha A (A)</th>
+          <th style="width: 5%">Pha B (A)</th>
+          <th style="width: 5%">Pha C (A)</th>
+          <th style="width: 5%">Pha N (A)</th>
+          <th style="width: 5%">Pha A (A)</th>
+          <th style="width: 5%">Pha B (A)</th>
+          <th style="width: 5%">Pha C (A)</th>
+        </tr>
+        <tr>
+          <td><input type="text" /></td>
+          <td>
+            <select class="select">
+              <option value="Chọn TBA" disabled selected>Chọn TBA</option>
+              <option value="E8.1 Đồng Niên">E8.1 Đồng Niên</option>
+              <option value="E8.4 Phả Lại TC">E8.4 Phả Lại TC</option>
+              <option value="E8.5 Chí Linh">E8.5 Chí Linh</option>
+              <option value="E8.6 Lai Khê">E8.6 Lai Khê</option>
+              <option value="E8.7 Nghĩa An">E8.7 Nghĩa An</option>
+              <option value="E8.10 Nhị Chiểu">E8.10 Nhị Chiểu</option>
+              <option value="E8.11 Đại An">E8.11 Đại An</option>
+              <option value="E8.13 Ngọc Sơn">E8.13 Ngọc Sơn</option>
+              <option value="E8.14 Thanh Miện">E8.14 Thanh Miện</option>
+              <option value="E8.15 Phúc Điền">E8.15 Phúc Điền</option>
+              <option value="E8.16 Tiền Trung">E8.16 Tiền Trung</option>
+              <option value="E8.19 Nguyên Giáp">E8.19 Nguyên Giáp</option>
+              <option value="E8.21 Cẩm Điền">E8.21 Cẩm Điền</option>
+              <option value="E8.22 Kim Thành">E8.22 Kim Thành</option>
+              <option value="E8.23 Thanh Hà">E8.23 Thanh Hà</option>
+            </select>
+          </td>
+          <td><input type="text" /></td>
+          <td><input type="text" /></td>
+          <td><input type="text" /></td>
+          <td>
+            <select class="select">
+              <option value="Chọn bảo vệ" disabled selected>Chọn bảo vệ</option>
+              <option value="Quá dòng">Quá dòng</option>
+              <option value="Chạm đất nhạy">Chạm đất nhạy</option>
+              <option value="Chạm đất thanh cái">Chạm đất thanh cái</option>
+              <option value="Khác">Khác</option>
+            </select>
+          </td>
+          <td><input type="text" /></td>
+          <td><input type="text" /></td>
+          <td><input type="text" /></td>
+          <td><input type="text" /></td>
+          <td><input type="text" /></td>
+          <td><input type="text" /></td>
+          <td><input type="text" /></td>
+          <td><textarea></textarea></td>
+        </tr>
+      </table>
+    </div>
+
+    <div>
+      <center>
+        <p style="font-size: 36px; font-weight: bold; margin: 3px">
+          Danh sách các sự kiện
+        </p>
+        <p style="font-size: 18px; font-weight: italic">
+          <i>
+            (Điều kiện kinh tế khó khăn nên phải dùng server miễn phí. Quý liền
+            anh, liền chị vui lòng ấn F5 cho đến khi hiện bảng)
+          </i>
+        </p>
+      </center>
+      <table id="data_table" class="table-content">
+        <tr>
+          <th rowspan="2" style="width: 5%">STT</th>
+          <th rowspan="2" style="width: 15%">Trạm biến áp</th>
+          <th rowspan="2" style="width: 5%">Ngăn lộ</th>
+          <th rowspan="2" style="width: 10%">Thời điểm nhảy</th>
+          <th rowspan="2" style="width: 10%">Thời điểm đóng</th>
+          <th rowspan="2" style="width: 10%">Bảo vệ tác động</th>
+          <th colspan="4">Dòng sự cố</th>
+          <th colspan="3">Dòng sự cố lớn nhất</th>
+          <th rowspan="2" style="width: 15%">Ghi chú</th>
+        </tr>
+        <tr>
+          <th style="width: 5%">Pha A (A)</th>
+          <th style="width: 5%">Pha B (A)</th>
+          <th style="width: 5%">Pha C (A)</th>
+          <th style="width: 5%">Pha N (A)</th>
+          <th style="width: 5%">Pha A (A)</th>
+          <th style="width: 5%">Pha B (A)</th>
+          <th style="width: 5%">Pha C (A)</th>
+        </tr>
+        <tr style="display: none">
+          <td><input type="text" /></td>
+          <td>
+            <select class="select">
+              <option value="Chọn TBA" disabled selected>Chọn TBA</option>
+              <option value="E8.1 Đồng Niên">E8.1 Đồng Niên</option>
+              <option value="E8.4 Phả Lại TC">E8.4 Phả Lại TC</option>
+              <option value="E8.5 Chí Linh">E8.5 Chí Linh</option>
+              <option value="E8.6 Lai Khê">E8.6 Lai Khê</option>
+              <option value="E8.7 Nghĩa An">E8.7 Nghĩa An</option>
+              <option value="E8.10 Nhị Chiểu">E8.10 Nhị Chiểu</option>
+              <option value="E8.11 Đại An">E8.11 Đại An</option>
+              <option value="E8.13 Ngọc Sơn">E8.13 Ngọc Sơn</option>
+              <option value="E8.14 Thanh Miện">E8.14 Thanh Miện</option>
+              <option value="E8.15 Phúc Điền">E8.15 Phúc Điền</option>
+              <option value="E8.16 Tiền Trung">E8.16 Tiền Trung</option>
+              <option value="E8.19 Nguyên Giáp">E8.19 Nguyên Giáp</option>
+              <option value="E8.21 Cẩm Điền">E8.21 Cẩm Điền</option>
+              <option value="E8.22 Kim Thành">E8.22 Kim Thành</option>
+              <option value="E8.23 Thanh Hà">E8.23 Thanh Hà</option>
+            </select>
+          </td>
+          <td><input type="text" /></td>
+          <td><input type="text" /></td>
+          <td><input type="text" /></td>
+          <td>
+            <select class="select">
+              <option value="Chọn bảo vệ" disabled selected>Chọn bảo vệ</option>
+              <option value="Quá dòng">Quá dòng</option>
+              <option value="Chạm đất nhạy">Chạm đất nhạy</option>
+              <option value="Chạm đất thanh cái">Chạm đất thanh cái</option>
+              <option value="Khác">Khác</option>
+            </select>
+          </td>
+          <td><input type="text" /></td>
+          <td><input type="text" /></td>
+          <td><input type="text" /></td>
+          <td><input type="text" /></td>
+          <td><input type="text" /></td>
+          <td><input type="text" /></td>
+          <td><input type="text" /></td>
+          <td><textarea></textarea></td>
+        </tr>
+      </table>
+    </div>
+
+    <script type="module" src="scripts.js"></script>
+
+    <script>
+      const d = new Date();
+      date = d.getDate();
+      month = d.getMonth() + 1;
+      year = d.getFullYear();
+      document.getElementById("ngay").innerHTML = date;
+      document.getElementById("thang").innerHTML = month;
+      document.getElementById("nam").innerHTML = year;
+
+      var myVar = setInterval(myTimer, 1000);
+
+      function myTimer() {
+        var t = new Date()
+          .toTimeString()
+          .replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
+        document.getElementById("now_time").innerHTML = "Bây giờ là: " + t;
+      }
+    </script>
+  </body>
+</html>

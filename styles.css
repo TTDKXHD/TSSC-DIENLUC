@@ -1,0 +1,109 @@
+body {
+  margin: 0;
+}
+
+h1 {
+  font-size: 36px;
+  text-align: center;
+  margin: 0px;
+  color: white;
+  width: 100%;
+  background-color: blue;
+}
+h2 {
+  font-size: 34.5px;
+  text-align: center;
+  margin: 0px;
+}
+.initial,
+.table-content {
+  text-align: center;
+  font-size: 20px;
+  width: 100%;
+  border: 1px solid black;
+}
+.initial {
+  font-size: 26px;
+}
+
+.table-content input {
+  width: 100%;
+  height: 50px;
+  box-sizing: border-box;
+  border-collapse: collapse;
+  font-size: 16px;
+  text-align: center;
+  margin: 0;
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+}
+
+.table-content textarea {
+  width: 100%;
+  height: 50px;
+  box-sizing: border-box;
+  border-collapse: collapse;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 8px;
+  padding: 0;
+  font-weight: bold;
+  color: red;
+  font-family: Arial;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th {
+  font-size: 16px;
+}
+
+button:hover {
+  opacity: 0.5;
+  color: black;
+}
+
+.btn_style {
+  width: 90%;
+  background-color: #04aa6d;
+  color: white;
+  padding: 5px 50px;
+  margin: 1px 0;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.side_by_side {
+  float: left;
+  width: 33.33%;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.select {
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  font-size: 16px;
+  color: red;
+  font-weight: bold;
+}
+
+.select:hover {
+  color: red;
+}
+
+.select:after {
+  content: "25BC";
+}
