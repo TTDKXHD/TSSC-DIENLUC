@@ -45,6 +45,20 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase();
 
+//Phát chuông cảnh báo khi bấm nút CẢNH BÁO
+onChildChanged(ref(database, "listen/"), (data) => {
+  var promise = document.getElementById("alert").play();
+  if (promise !== undefined) {
+    promise
+      .then((_) => {
+        document.getElementById("alert").play();
+      })
+      .catch((error) => {
+        alert("Bạn chưa bật chuông cảnh báo!");
+      });
+  }
+});
+
 //Lấy dữ liệu từ firebase
 function get_data_firebase() {
   const database_ref = ref(database, "TSSC");
