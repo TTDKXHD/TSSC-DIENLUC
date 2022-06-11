@@ -18,12 +18,6 @@ document.getElementById("enable_alert").addEventListener("click", function () {
   }
 });
 
-//Lấy và ghi dữ liệu thêm mới
-document.getElementById("confirm").addEventListener("click", confirm);
-
-//Nút bấm dự phòng
-//document.getElementById("spare").addEventListener("click", refresh_all);
-
 //Thêm các hàm và khai báo các biến cần thiết, API của firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
 import {
@@ -86,17 +80,6 @@ function del_data_table() {
   for (let i = row_data - 1; i > 2; i--) {
     data_table.deleteRow(i);
   }
-}
-
-//Hàm chỉnh sửa giá trị True/False của my_refresh trong firebase để cập nhật bảng dữ liệu
-function refresh_listen() {
-  const database_ref = ref(database);
-  get(child(database_ref, "refresh")).then((snapshot) => {
-    const current_value = snapshot.val().my_refresh;
-    const new_value = !current_value;
-    const new_data = { my_refresh: new_value };
-    update(child(database_ref, "refresh"), new_data);
-  });
 }
 
 //Hàm tạo các hàng có dữ liệu vào bảng dữ liệu
