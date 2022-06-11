@@ -112,7 +112,7 @@ function import_data_table(snapshot) {
       row.appendChild(cell);
     }
     if (i % 2 == 1) {
-      row.style.backgroundColor = "#ffb3b3";
+      row.style.backgroundColor = "#e6f0ff";
     }
   }
 }
